@@ -13,6 +13,8 @@ let globalMinute = 0;
 let restCount = 3;
 let powerUpsTimer = 30;
 let powerUpsInterval;
+let powerInterval ;
+let powerTimer ;
 let globalInterval;
 let playerScore = 0;
 let isPlaying = false;
@@ -20,19 +22,19 @@ let isPlaying = false;
 const gamePowerUps = [
   {
     power: 'Time Freeze',
-    duration: 5
+    duration: 8
   },
   {
     power: 'Time Multiplier',
-    duration: 3
+    duration: 5
   },
   {
     power: 'Extra Time',
-    duration: 3
+    duration: 7
   },
   {
     power: 'Unlimited Rest Count',
-    duration: 4
+    duration: 10
   }
 ];
 
@@ -61,7 +63,7 @@ function startGlobalTimer() {
       clearInterval(globalInterval);
       gameOver();
     }
-  }, 800);
+  }, 8000);
 }
 
 function displayPowerUpsTimer() {
@@ -76,20 +78,30 @@ function displayPowerUpsTimer() {
       clearInterval(powerUpsInterval)
       grantedRandomPowerUps();
     }
-  }, 1000);
+  }, 600);
 }
 
 function grantedRandomPowerUps() {
   //gamePowerUps
-  const randomIndex = Math.floor(Math.random() * gamePowerUps.length + 1);
+  const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
   const randomPowerUps = gamePowerUps[randomIndex];
 
+  const {power, duration } = randomPowerUps
+ 
+  powerUpsInterval = setInterval(() => {
 
-  game__mission.innerHTML = `<p>
- ${randomPowerUps.power} :
-    <span> ${randomPowerUps.duration} S </span>
-  </p>`;
+    if (duration > 0) {
+      duration-- 
+      game__mission.innerHTML = `<p>
+      ${power}
+         <span> ${duration} S </span>
+       </p>`;
+    }
+
+  }, `${duration}`)
+
+ 
 
 }
 
