@@ -63,7 +63,7 @@ function startGlobalTimer() {
       clearInterval(globalInterval);
       gameOver();
     }
-  }, 8000);
+  }, 800);
 }
 
 function displayPowerUpsTimer() {
@@ -78,7 +78,7 @@ function displayPowerUpsTimer() {
       clearInterval(powerUpsInterval)
       grantedRandomPowerUps();
     }
-  }, 400);
+  }, 1000);
 }
 
 function grantedRandomPowerUps() {
