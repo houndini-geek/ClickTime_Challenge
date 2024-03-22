@@ -138,6 +138,7 @@ function timeFreezeFun(powerName, duration) {
 }
 
 function timeMultiplierFun(powerName, duration) {
+  actionBtns.forEach((btn) => (btn.disabled = true));
   clearInterval(globalInterval);
   clearInterval(powerUpsInterval);
 
@@ -163,6 +164,7 @@ function timeMultiplierFun(powerName, duration) {
 }
 
 function scoreBoostFun(powerName, duration) {
+  actionBtns.forEach((btn) => (btn.disabled = true));
   clearInterval(powerUpsInterval);
   score__boost = true 
 
@@ -179,6 +181,7 @@ function scoreBoostFun(powerName, duration) {
       clearInterval(powerInterval);
       powerUpsTimer = 30;
       displayPowerUpsTimer();
+      actionBtns.forEach((btn) => (btn.disabled = false));
     }
 
   },1000)
