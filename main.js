@@ -17,6 +17,26 @@ let globalInterval;
 let playerScore = 0;
 let isPlaying = false;
 
+const gamePowerUps = [
+  {
+    power: 'Time Freeze',
+    duration: 5
+  },
+  {
+    power: 'Time Multiplier',
+    duration: 3
+  },
+  {
+    power: 'Extra Time',
+    duration: 3
+  },
+  {
+    power: 'Unlimited Rest Count',
+    duration: 4
+  }
+];
+
+
 gameBox.style.pointerEvents = "none";
 resumeBtn.disabled = true;
 takeBreak.disabled = true;
