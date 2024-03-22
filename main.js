@@ -65,6 +65,7 @@ if (powerUpsTimer > 0) {
 
 function stopGlobalTimer() {
   clearInterval(globalInterval);
+  clearInterval(powerUpsInterval)
   actionBtns.forEach(btn => btn.disabled = true);
   isPlaying = false;
 }
