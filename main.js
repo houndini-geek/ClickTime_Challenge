@@ -4,10 +4,52 @@ document.querySelector('.openMenu');
 const menu = 
 document.querySelector('.menu');
 
+
+const shareBtn = 
+document.querySelector('.shareBtn');
+
+const deleteDataBtn = 
+document.querySelector('.deleteData');
+
+
 openMenu.addEventListener('click',() => {
   
   menu.classList.toggle('active')
-})
+});
+
+
+shareBtn.onclick = shareWithFriends
+deleteDataBtn.onclick = deleteData
+
+
+function shareWithFriends() {
+  const data = {
+    title: 'ClickTime Challenge',
+    text: '🚀 Can you beat my score in ClickTime Challenge? Test your clicking speed and agility now! Play with power-ups and aim for the high score! 💥',
+    url: ''
+  }
+
+  if (navigator.canShare && navigator.canShare(data)) {
+    navigator.share(data)
+  } else {
+    console.log('Your browser does not support Web share API')
+    alert('Your browser does not support Web share API')
+  }
+}
+
+
+function deleteData() {
+  const confirmation = confirm('Are you sure you want to delete your game data? This action cannot be undone.');
+  
+  if (confirmation) {
+    localStorage.removeItem('Score');
+    localStorage.removeItem('HIScore');
+    displayScores();
+    alert('Your game data has been deleted.');
+  }
+} 
+
+
 
 
 const actionBtns = document.querySelectorAll(".game__state button");
