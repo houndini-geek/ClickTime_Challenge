@@ -72,8 +72,25 @@ function displayPowerUpsTimer() {
  power_ups
     <span> ${powerUpsTimer} S </span>
   </p>`;
+    }else {
+      clearInterval(powerUpsInterval)
+      grantedRandomPowerUps();
     }
   }, 1000);
+}
+
+function grantedRandomPowerUps() {
+  //gamePowerUps
+  const randomIndex = Math.floor(Math.random() * gamePowerUps.length + 1);
+ 
+  const randomPowerUps = gamePowerUps[randomIndex];
+
+
+  game__mission.innerHTML = `<p>
+ ${randomPowerUps.power} :
+    <span> ${randomPowerUps.duration} S </span>
+  </p>`;
+
 }
 
 function stopGlobalTimer() {
