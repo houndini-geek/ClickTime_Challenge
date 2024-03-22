@@ -84,6 +84,7 @@ main .in-game__mission {
 main .in-game__mission p {
   font-size: 0.8em;
   text-align: center;
+  text-transform: capitalize;
 }
 
 main .in-game__mission p span {

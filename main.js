@@ -1,5 +1,6 @@
 const actionBtns = document.querySelectorAll(".game__state button");
 const startGameBtn = document.querySelector(".startGameBtn");
+const game__mission = document.querySelector('.in-game__mission');
 const takeBreak = document.querySelector('.takeBreak');
 const resumeBtn = document.querySelector('.resume');
 const smart__bar = document.querySelector(".smart_bar");
@@ -10,6 +11,7 @@ const player_current_score = document.querySelector(".player__current__score");
 let globalSecond = 10;
 let globalMinute = 0;
 let restCount = 3;
+let challengeTimer = 30
 let globalInterval;
 let playerScore = 0;
 let isPlaying = false;
@@ -31,6 +33,7 @@ function startGlobalTimer() {
 
     globalInterval = setInterval(() => {
       updateTimerDisplay();
+      displayChallenge()
       if (globalSecond > 0) {
         globalSecond--;
       } else {
@@ -41,6 +44,20 @@ function startGlobalTimer() {
     }, 1000);
   
 }
+
+function displayChallenge(){
+
+if (challengeTimer < 30) {
+
+  challengeTimer++ 
+  game__mission.innerHTML = `<p>
+  challenge in
+    <span> ${challengeTimer} S </span>
+  </p>`
+}
+
+}
+
 
 function stopGlobalTimer() {
   clearInterval(globalInterval);
@@ -75,7 +92,7 @@ function takeBreakFun() {
 
       restCount = 0 
       takeBreak.disabled = true
-     resumeBtn.disabled = false 
+     resumeBtn.disabled = true 
     console.log('Out of rest count');
     stopGlobalTimer();
   }
@@ -84,7 +101,7 @@ function takeBreakFun() {
 }
 
 function resumeGame() {
-  takeBreak.disabled = false
+  takeBreak.disabled = true
   resumeBtn.disabled = true
   startGlobalTimer();
 }
