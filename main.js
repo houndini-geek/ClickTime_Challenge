@@ -1,3 +1,8 @@
+//!!! TODO: Save player score, HI in LocalStorage
+
+
+
+
 const actionBtns = document.querySelectorAll(".game__state button");
 const startGameBtn = document.querySelector(".startGameBtn");
 const game__mission = document.querySelector(".in-game__mission");
@@ -35,7 +40,7 @@ const gamePowerUps = [
   },
   {
     power: 'Gravity Shift',
-    powerDuration: 10
+    duration: 10
   }
 ];
 
@@ -90,7 +95,7 @@ function grantedRandomPowerUps() {
   //gamePowerUps
   const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
-  const randomPowerUps = gamePowerUps[randomIndex];
+  const randomPowerUps = gamePowerUps[3];
 
   let {power, duration } = randomPowerUps
 
@@ -187,6 +192,7 @@ function scoreBoostFun(powerName, duration) {
   },1000)
 }
 function gravityShiftFun(powerName, duration) {
+  console.log(duration)
   // Add a class to the game box to trigger the floating effect
   gameBox.classList.add('gravityShift');
   clearInterval(powerUpsInterval);
