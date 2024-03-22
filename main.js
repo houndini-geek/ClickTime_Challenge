@@ -13,6 +13,8 @@ const globalTimerTemplate = document.querySelector(".timer");
 const gameBox = document.querySelector(".game__box");
 const player_current_score = document.querySelector(".player__current__score");
 
+const playerScoreTemplate = document.querySelector('.player__score')
+
 
 const allPowerUpsIcons = 
 document.querySelectorAll('.game__power__ups div');
@@ -56,6 +58,8 @@ const gamePowerUps = [
 gameBox.style.pointerEvents = "none";
 resumeBtn.disabled = true;
 takeBreak.disabled = true;
+
+displayScores()
 
 function updateTimerDisplay() {
   globalTimerTemplate.innerHTML = `<span>${globalMinute} M</span> : <span>${globalSecond} S</span>`;
@@ -244,6 +248,7 @@ function gameOver() {
   restCount = 3;
   alert('Oh no! Time\'s up! 🕒 But don\'t worry, you\'ll crush it next time! 💪 Let\'s reload and try again!');
   location.reload(true);
+  
 }
 
 
@@ -263,6 +268,49 @@ function handleBoxClick() {
     }
   }
   player_current_score.innerHTML = `Score : ${playerScore}`;
+  
+  savePlayerScore(playerScore)
+}
+
+
+function savePlayerScore(score) {
+  // Retrieve the saved high score from localStorage
+  let savedHIScore = Number(localStorage.getItem('HIScore')) || 0;
+
+  // Retrieve the saved score from localStorage
+  let savedScore = Number(localStorage.getItem('Score')) || 0;
+
+  // Update the high score if the current score is higher
+  if (score > savedHIScore) {
+    savedHIScore = score;
+    localStorage.setItem('HIScore', savedHIScore);
+  }
+
+  // Always update the current score
+  savedScore = score;
+  localStorage.setItem('Score', savedScore);
+  displayScores()
+}
+
+
+
+function displayScores() {
+  
+    // Retrieve the saved high score from localStorage
+  let savedHIScore = Number(localStorage.getItem('HIScore')) || 0;
+
+  // Retrieve the saved score from localStorage
+  let savedScore = Number(localStorage.getItem('Score')) || 0;
+
+
+  playerScoreTemplate.innerHTML = `
+  
+   <span>HI : ${savedHIScore}</span> :
+   <span class="player__current__score">Score : ${savedScore}</span>
+  
+  `
+  
+  
 }
 
 
