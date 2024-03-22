@@ -137,10 +137,12 @@ function handleBoxClick() {
 function takeBreakFun() {
   if (restCount > 0) {
     restCount--;
-    resumeBtn.disabled = false;
-    takeBreak.disabled = true;
+  
     takeBreak.setAttribute("data-restCount", restCount);
     stopGlobalTimer();
+    resumeBtn.disabled = false
+    takeBreak.disabled = true;
+   
   } else {
     restCount = 0;
     takeBreak.disabled = true;
