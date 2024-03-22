@@ -62,7 +62,7 @@ takeBreak.disabled = true;
 displayScores()
 
 function updateTimerDisplay() {
-  globalTimerTemplate.innerHTML = `<span>${globalMinute} M</span> : <span>${globalSecond} S</span>`;
+  globalTimerTemplate.innerHTML = ` <span>${globalSecond} S</span>`;
 }
 
 function startGlobalTimer() {
@@ -276,7 +276,6 @@ function handleBoxClick() {
   }
   
   player_current_score.innerHTML = `Score: ${playerScore}`
-  
   savePlayerScore(playerScore);
   
   
