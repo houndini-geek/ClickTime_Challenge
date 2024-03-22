@@ -1,0 +1,186 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --NumbersFont: "Allerta Stencil", sans-serif;
+  --LettersFont: "Biryani", sans-serif;
+}
+
+body {
+  font-size: 15pt;
+  text-align: center;
+  width: min(100%, 480px);
+  margin: 0 auto 0;
+  font-family: var(--LettersFont);
+}
+
+main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0.5em;
+}
+main button {
+  cursor: pointer;
+}
+
+main header {
+  grid-column: 1 / 8;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+}
+main header h1 {
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+
+main header button {
+  font-family: var(--LettersFont);
+  display: inline-block;
+  background-color: #6082b6;
+  border: none;
+  padding: 0.3em 0.7em;
+  border-radius: 0.4em;
+  text-transform: capitalize;
+  color: #f5f5f5;
+}
+
+main .timer {
+  grid-column: 1 / 8;
+  padding: 0.6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+main .timer span {
+  font-family: var(--NumbersFont);
+  font-size: 2em;
+}
+
+main .player__score {
+  grid-column: 1 / 8;
+}
+
+main .player__score span {
+  font-size: 0.7em;
+}
+
+main .in-game__mission {
+  grid-column: 1 / 8;
+  text-align: center;
+  padding: 0.4em;
+}
+
+main .in-game__mission p {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+main .in-game__mission p span {
+  font-family: var(--NumbersFont);
+}
+
+main .game__box {
+  grid-column: 1 / 7;
+  height: 25rem;
+  border-radius: 0.4em;
+  cursor: pointer;
+  background: hsla(197, 100%, 63%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(197, 100%, 63%, 1) 0%,
+    hsla(294, 100%, 55%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(197, 100%, 63%, 1) 0%,
+    hsla(294, 100%, 55%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(197, 100%, 63%, 1) 0%,
+    hsla(294, 100%, 55%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#40C9FF", endColorstr="#E81CFF", GradientType=1 );
+}
+
+main .game__power__ups {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+main .game__power__ups div {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  display: grid;
+  place-items: center;
+}
+
+main .game__power__ups div svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+main .game__state {
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  gap: 3em;
+  position: relative;
+  margin: 3% auto;
+  grid-column: 1 / 7;
+}
+
+main .game__state button {
+  display: block;
+  border: none;
+  padding: 0 0.2em;
+  border-radius: 0.5em;
+  height: 3rem;
+  position: relative;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: var(--LettersFont);
+  font-weight: 600;
+  background-color: transparent;
+  position: relative;
+}
+
+main .game__state button:disabled {
+  opacity: 0.8;
+}
+
+main .game__state .takeBreak::after {
+
+}
+
+
+
+main .game__state .smart_bar {
+  position: absolute;
+  bottom: 0;
+  height: 0.3em;
+  background: hsla(299, 100%, 55%, 1);
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  transition: transform 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.25, 1, 0.22, 1.1);
+}

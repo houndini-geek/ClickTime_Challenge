@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Biryani:wght@200;300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="main.js" defer></script>
+
+    <title>clictime challenge</title>
+
+    <!-- HTML -->
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Project -->
+
+    <main>
+      <header>
+        <h1>clictime challenge</h1>
+        <button>menu</button>
+      </header>
+
+      <div class="timer">
+        <span>0 M</span> :
+        <span>10 S</span>
+      </div>
+
+      <div class="player__score">
+        <span>HI : 0</span> :
+        <span class="player__current__score">Score : 0</span>
+      </div>
+
+      <div class="in-game__mission">
+        <p>
+          Hit the box 30 times in
+          <span> 10 S </span>
+        </p>
+      </div>
+
+      <div class="game__box"></div>
+
+      <div class="game__power__ups">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            viewBox="0 -960 960 960"
+            width="40"
+          >
+            <path
+              d="M585.18-298.051h157.077v-158.052H708.41v124.206H585.18v33.846ZM217.897-503.897h33.846v-124.206h123.231v-33.846H217.897v158.052ZM120-200v-560h720v560H120Zm33.846-33.846h652.308v-492.308H153.846v492.308Zm0 0v-492.308 492.308Z"
+            />
+          </svg>
+        </div>
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            viewBox="0 -960 960 960"
+            width="40"
+          >
+            <path
+              d="M436.102-373.025h196.924v-33.846H469.949v-130.052h163.077V-734.82H436.102v33.846h163.077v130.205H436.102v197.744Zm-188.41 105.333V-840H820v572.308H247.692Zm33.846-33.846h504.616v-504.616H281.538v504.616ZM140-160v-547.693h33.846v513.847h513.847V-160H140Zm141.538-141.538v-504.616 504.616Z"
+            />
+          </svg>
+        </div>
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            viewBox="0 -960 960 960"
+            width="40"
+          >
+            <path
+              d="M391.744-297.846H568.41v-284.616H391.744v33.847h142.82v91.538h-102.82v33.846h102.82v91.539h-142.82v33.846Zm-16.359-568.308V-900h209.23v33.846h-209.23Zm104.615 746q-65.948 0-124.32-25.295-58.372-25.294-101.988-68.653-43.615-43.359-68.654-101.988Q160-374.719 160-440.41t25.038-124.064q25.039-58.372 68.654-101.988 43.616-43.615 101.988-68.654 58.372-25.038 124.32-25.038 59.949 0 114.821 21.41 54.871 21.41 99.128 60.231l41.897-42.41 24.103 24.102-42.41 42.411q37.692 41.794 60.077 96.102Q800-504 800-440.154q0 65.435-25.038 124.064-25.039 58.629-68.654 101.988-43.616 43.359-101.988 68.653-58.372 25.295-124.32 25.295ZM479.927-154q118.996 0 202.612-83.543 83.615-83.543 83.615-202.538 0-118.996-83.543-202.612-83.543-83.615-202.538-83.615-118.996 0-202.612 83.543-83.615 83.543-83.615 202.539 0 118.995 83.543 202.611Q360.932-154 479.927-154ZM480-440Z"
+            />
+          </svg>
+        </div>
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            viewBox="0 -960 960 960"
+            width="40"
+          >
+            <path
+              d="m764.564-296.871-24.82-24.821q12.436-26.384 19.423-56.449 6.987-30.064 6.987-62.013 0-119.026-83.564-202.59-83.564-83.564-202.59-83.564-29.334 0-61.436 6.615-32.103 6.616-57.103 19.719l-24.974-24.975q32.205-18 69.5-26.603 37.295-8.602 73.895-8.602 59.298 0 113.746 21.026 54.449 21.025 99.552 60.615l41.897-42.41 24.103 24.102-42.411 42.411q41.385 45.564 62.308 100.807Q800-498.359 800-440.154q0 36.564-8.782 73.885-8.782 37.321-26.654 69.398ZM496.923-564.512v-61.078h-33.846v27.231l33.846 33.847ZM803.18-105.23 699.795-208.102q-42.103 41.359-99.398 64.654Q543.103-120.154 480-120.154q-66.308 0-124.5-25.295-58.192-25.294-101.808-68.653-43.615-43.359-68.654-101.808Q160-374.359 160-440.1q0-61.746 21.961-117.81 21.962-56.064 65.987-102.552L105.384-803.026l24.257-24.256 697.795 697.795-24.256 24.257ZM480-154q54.308 0 105.18-20.513 50.871-20.512 91.615-58.153L272.872-637.103q-38.154 39.564-58.59 90.282-20.436 50.718-20.436 106.667 0 119.026 83.564 202.59Q360.974-154 480-154ZM375.385-866.154V-900h209.23v33.846h-209.23ZM474.692-435Zm76.077-76Z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="game__state">
+        <button class="startGameBtn" data-action="start">start</button>
+        <button class="takeBreak" data-action="rest" data-restCount="3">rest</button>
+        <button class="resume" data-action="resume">resume</button>
+        <div class="smart_bar"></div>
+      </div>
+    </main>
+  </body>
+</html>
