@@ -11,7 +11,8 @@ const player_current_score = document.querySelector(".player__current__score");
 let globalSecond = 10;
 let globalMinute = 0;
 let restCount = 3;
-let challengeTimer = 30
+let powerUpsTimer = 30
+let powerUpsInterval ;
 let globalInterval;
 let playerScore = 0;
 let isPlaying = false;
@@ -33,7 +34,7 @@ function startGlobalTimer() {
 
     globalInterval = setInterval(() => {
       updateTimerDisplay();
-      displayChallenge()
+       displayPowerUpsTimer()
       if (globalSecond > 0) {
         globalSecond--;
       } else {
@@ -45,17 +46,20 @@ function startGlobalTimer() {
   
 }
 
-function displayChallenge(){
+function displayPowerUpsTimer(){
 
-if (challengeTimer < 30) {
+  powerUpsInterval = setInterval(() => {
+    
+if (powerUpsTimer > 30) {
 
-  challengeTimer++ 
+  powerUpsTimer--
   game__mission.innerHTML = `<p>
-  challenge in
-    <span> ${challengeTimer} S </span>
+ power_ups
+    <span> ${powerUpsTimer} S </span>
   </p>`
 }
 
+  },1000)
 }
 
 
@@ -93,8 +97,7 @@ function takeBreakFun() {
       restCount = 0 
       takeBreak.disabled = true
      resumeBtn.disabled = true 
-    console.log('Out of rest count');
-    stopGlobalTimer();
+      console.log('Out of rest count');
   }
 
 
