@@ -33,10 +33,129 @@
   <body>
     <!-- Project -->
 
+<div class="menu">
+        
+        <details open>
+          <summary>
+           objective
+          </summary>
+          <p>
+            Your objective is to click on the box as many times as you can within the time limit.
+          </p>
+        </details>
+        
+        <details>
+          <summary>
+            game controls
+          </summary>
+          <p>
+            Click on the box to increase your score. Use the provided power-ups strategically to enhance your gameplay. 
+          </p>
+        </details>
+        
+        <details>
+          <summary>
+            power_ups
+          </summary>
+          
+          <div>
+           <span>time freeze: </span>
+           <p>
+            stop the timer temporarily 
+           </p>
+          </div>
+          
+          <div>
+            <span>
+              time multiplier: 
+            </span>
+            <p>
+             speeds up the timer for a limited duration
+            </p>
+          </div>
+          
+          <div>
+            <span>score boost: </span>
+            <p>
+              doubles the points earned per click for a short period
+            </p>
+          </div>
+          
+          <div>
+            <span>gravity shift: </span>
+            <p>
+              alter the mouvement of the box, making it more challenging to click
+            </p>
+          </div>
+          
+        </details>
+        
+        
+        <details>
+          
+          <summary>
+            scoring
+          </summary>
+          
+          <p>
+            You earn one point for each click on the box. Every 50 points earned will grant you additional time.
+          </p>
+        </details>
+        
+        <details>
+          <summary>
+            game over
+          </summary>
+          
+          <p>
+            When the timer runs out, the game will display your final score. You can then choose to play again or exit.
+          </p>
+        </details>
+        
+        <details>
+          <summary>
+            hight score
+          </summary>
+          <p>
+            Your highest score achieved in a single game will be recorded as your high score. Can you beat your own record?
+          </p>
+        </details>
+        
+        
+        <details>
+          <summary>
+            tips and strategies
+          </summary>
+          
+          <p>
+            The rest button allows you to pause the game temporarily. When clicked, the game will pause, giving you a chance to take a break. You can resume the game by clicking the resume button. Keep in mind that you have a limited number of rest opportunities, so use them wisely.
+          </p>
+        </details>
+        
+        <div class="action_btns">
+          
+          <button class="shareBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M229.66,109.66l-48,48a8,8,0,0,1-11.32-11.32L204.69,112H165a88,88,0,0,0-85.23,66,8,8,0,0,1-15.5-4A103.94,103.94,0,0,1,165,96h39.71L170.34,61.66a8,8,0,0,1,11.32-11.32l48,48A8,8,0,0,1,229.66,109.66ZM192,208H40V88a8,8,0,0,0-16,0V208a16,16,0,0,0,16,16H192a8,8,0,0,0,0-16Z"></path></svg>
+           <p>share with friends</p>
+          </button>
+          
+          <button class="deleteData">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M216,48H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM192,208H64V64H192ZM80,24a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,24Z"></path></svg>
+            <p>delete data</p>
+          </button>
+          
+        </div>
+        
+        
+      </div>
+      
+      
+
+
     <main>
       <header>
         <h1>clictime challenge</h1>
-        <button>menu</button>
+        <button class="openMenu">menu</button>
       </header>
 
       <div class="timer">
@@ -118,6 +237,10 @@
         <button class="resume" data-action="resume">resume</button>
         <div class="smart_bar"></div>
       </div>
+      
+      
+      
+      
     </main>
   </body>
 </html>

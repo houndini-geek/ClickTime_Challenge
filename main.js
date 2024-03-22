@@ -1,6 +1,13 @@
-//!!! TODO: Save player score, HI in LocalStorage
+const openMenu = 
+document.querySelector('.openMenu');
 
+const menu = 
+document.querySelector('.menu');
 
+openMenu.addEventListener('click',() => {
+  
+  menu.classList.toggle('active')
+})
 
 
 const actionBtns = document.querySelectorAll(".game__state button");

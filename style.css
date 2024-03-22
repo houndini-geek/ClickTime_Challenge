@@ -18,6 +18,7 @@ body {
   margin: 0 auto 0;
   font-family: var(--LettersFont);
   overflow-y :hidden ;
+ 
 }
 
 main {
@@ -25,6 +26,7 @@ main {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   padding: 0.5em;
+   transition: transform  .2s ease-in-out ;
 }
 main button {
   cursor: pointer;
@@ -223,4 +225,125 @@ main .game__state .smart_bar {
   border-top-right-radius: 0.3em;
   transition: transform 0.2s ease-in-out;
   transition-timing-function: cubic-bezier(0.25, 1, 0.22, 1.1);
+}
+
+.menu {
+  
+  position :fixed ;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 70%;
+  z-index :5 ;
+  background-color :#FFFFFF ;
+  box-shadow :0 0 7px rgba(183,185,190,.4);
+  display :flex ;
+  flex-direction :column ;
+  justify-content :flex-start ;
+  align-items :center ;
+  overflow-y :auto ;
+  padding:.3em;
+  transform: translateX(-700px);
+  transition: transform  .2s ease-in-out ;
+}
+
+.menu.active{
+  
+    transform: translateX(0);
+    transition: transform  .2s ease-in-out ;
+}
+
+.menu.active ~ main {
+   transform: translateX(20px);
+   transition: transform  .2s ease-in-out ;
+   opacity: 0.8;
+}
+
+
+.menu details {
+  
+  width: 100%;
+  text-align :left ;
+  text-transform :capitalize ;
+  border :1px solid rgba(192,181,187,.4);
+  margin :1em 0;
+  padding:.5em;
+  border-radius :.4em;
+  transition: all  .2s ease-in-out ;
+}
+
+
+
+
+
+.menu details summary {
+  
+  font-weight :300 ;
+  font-size :.9em ;
+  list-style: none;
+}
+.menu  details p {
+  
+  font-size :.8em;
+  padding-top:.7em;
+  font-weight :200 ;
+}
+
+
+.menu details div {
+  
+  width :100%;
+  height :auto ;
+  margin :1em 0;
+  border :1px solid rgba(192,181,187,.4);
+  padding:.5em;
+  border-radius :.4em;
+}
+
+.menu  details div span {
+  
+  display :block ;
+  margin: 0;
+  font-weight :400 ;
+  font-size :.8em;
+}
+
+.menu .action_btns {
+  
+  width: 100%;
+  display :flex ;
+  justify-content :center ;
+  align-items :center ;
+  flex-wrap :wrap ;
+  border-top: 1px solid rgba(192,181,187);
+  padding-top :3em;
+}
+
+.menu  .action_btns button {
+  
+  flex-grow :1 ;
+  display :flex ;
+  justify-content :center ;
+  align-items :center ;
+  padding: 1em 0;
+  gap: 1em;
+  background-color :#252525;
+  color: #FFFFFF;
+  border :none ;
+  margin: 1em 0;
+  border-radius :.4em;
+}
+
+.menu .action_btns  button svg {
+  
+  width: 2em;
+  height: 2em;
+  fill: #E0E1DD ;
+}
+
+.menu  .action_btns button p {
+  
+  font-family :var(--LettersFont);
+  text-transform :capitalize ;
+  font-size :1em ;
 }
