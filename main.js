@@ -42,7 +42,7 @@ function startGlobalTimer() {
         clearInterval(globalInterval);
         gameOver();
       }
-    }, 1000);
+    }, 800);
   
 }
 
@@ -50,7 +50,7 @@ function displayPowerUpsTimer(){
 
   powerUpsInterval = setInterval(() => {
     
-if (powerUpsTimer > 30) {
+if (powerUpsTimer > 0) {
 
   powerUpsTimer--
   game__mission.innerHTML = `<p>
