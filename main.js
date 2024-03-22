@@ -94,11 +94,13 @@ function grantedRandomPowerUps() {
   powerUpsInterval = setInterval(() => {
 
     if (powerTimer > 0) {
-      powerInterval-- 
+      powerTimer-- 
       game__mission.innerHTML = `<p>
-      ${power}
+      ${power} : 
          <span> ${powerTimer} S </span>
        </p>`;
+    }else {
+      powerUpsTimer = 0
     }
 
   },1000)
