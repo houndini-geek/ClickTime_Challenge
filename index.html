@@ -2,6 +2,9 @@
 <html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
+     <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/manifest.json">
+    
     <link rel="shortcut icon" type="image/x-icon" href="game_logo/game_logo.jpeg">
     
     <!-- Primary Meta Tags -->
@@ -44,6 +47,15 @@
       href="https://fonts.googleapis.com/css2?family=Biryani:wght@200;300;400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+<script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+
 
     <script src="main.js" defer></script>
 
