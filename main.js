@@ -95,7 +95,7 @@ function grantedRandomPowerUps() {
   //gamePowerUps
   const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
-  const randomPowerUps = gamePowerUps[3];
+  const randomPowerUps = gamePowerUps[randomIndex];
 
   let {power, duration } = randomPowerUps
 
