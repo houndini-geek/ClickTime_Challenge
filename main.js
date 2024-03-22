@@ -69,7 +69,7 @@ function startGlobalTimer() {
       clearInterval(globalInterval);
       gameOver();
     }
-  }, 800);
+  }, 600);
 }
 
 
