@@ -87,7 +87,7 @@ function grantedRandomPowerUps() {
  
   const randomPowerUps = gamePowerUps[randomIndex];
 
-  const {power, duration } = randomPowerUps
+  let {power, duration } = randomPowerUps
  
   powerUpsInterval = setInterval(() => {
 
