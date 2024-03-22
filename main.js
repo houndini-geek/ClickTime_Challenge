@@ -34,8 +34,8 @@ const gamePowerUps = [
     duration: 7
   },
   {
-    power: 'Unlimited Rest Count',
-    duration: 10
+    power: 'Gravity Shift',
+    powerDuration: 10
   }
 ];
 
@@ -82,7 +82,7 @@ function displayPowerUpsTimer() {
       clearInterval(powerUpsInterval);
       grantedRandomPowerUps();
     }
-  }, 1000);
+  },1000);
 }
 
 
@@ -90,7 +90,7 @@ function grantedRandomPowerUps() {
   //gamePowerUps
   const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
-  const randomPowerUps = gamePowerUps[2];
+  const randomPowerUps = gamePowerUps[randomIndex];
 
   let {power, duration } = randomPowerUps
 
@@ -104,11 +104,11 @@ function grantedRandomPowerUps() {
     case "Score Boost":
       scoreBoostFun(power,duration);
       break 
-    case "Unlimited Rest Count":
-      unlimitedRestCountFun(power,duration);
+    case "Gravity Shift":
+      gravityShiftFun(power,duration);
       break;
     default :
-    console.log('Invalid power')
+    return
   }
  
 }
@@ -184,6 +184,28 @@ function scoreBoostFun(powerName, duration) {
       actionBtns.forEach((btn) => (btn.disabled = false));
     }
 
+  },1000)
+}
+function gravityShiftFun(powerName, duration) {
+  // Add a class to the game box to trigger the floating effect
+  gameBox.classList.add('gravityShift');
+  clearInterval(powerUpsInterval);
+  actionBtns.forEach((btn) => (btn.disabled = true));
+  let powerInterval = setInterval(() => {
+
+    if (duration > 0) {
+      duration--
+      game__mission.innerHTML = `<p>
+      ${powerName} : 
+      <span> ${duration} S </span>
+     </p>`;
+    }else {
+      clearInterval(powerInterval);
+      powerUpsTimer = 30;
+      displayPowerUpsTimer();
+      actionBtns.forEach((btn) => (btn.disabled = false));
+      gameBox.classList.remove('gravityShift');
+    }
   },1000)
 }
 
