@@ -63,7 +63,7 @@ function startGlobalTimer() {
       clearInterval(globalInterval);
       gameOver();
     }
-  }, 800);
+  }, 1000);
 }
 
 function displayPowerUpsTimer() {
@@ -71,10 +71,11 @@ function displayPowerUpsTimer() {
     if (powerUpsTimer > 0) {
       powerUpsTimer--;
       game__mission.innerHTML = `<p>
- power_ups
+ power_ups in : 
     <span> ${powerUpsTimer} S </span>
   </p>`;
     }else {
+     
       clearInterval(powerUpsInterval)
       grantedRandomPowerUps();
     }
@@ -85,29 +86,53 @@ function grantedRandomPowerUps() {
   //gamePowerUps
   const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
-  const randomPowerUps = gamePowerUps[randomIndex];
+  const randomPowerUps = gamePowerUps[0];
 
   let {power, duration } = randomPowerUps
+
+  switch (power) {
+    case "Time Freeze":
+      timeFreezeFun(power,duration);
+      break;
+    case "Time Multiplier":
+      timeMultiplierFun(power,duration);
+      break;
+    case "Extra Time":
+      extraTimeFun(power,duration);
+      break 
+    case "Unlimited Rest Count":
+      unlimitedRestCountFun(power,duration);
+      break;
+    default :
+    console.log('Invalid power')
+  }
  
-  powerDuration = duration
+}
 
-  powerUpsInterval = setInterval(() => {
+function timeFreezeFun(powerName, duration) {
+ 
+  clearInterval(globalInterval);
+  clearInterval(powerUpsInterval)
 
-    if (powerTimer > 0) {
+  powerDuration = duration 
+
+  powerInterval = setInterval(() => {
+
+    if (powerDuration > 0) {
       powerDuration-- 
       game__mission.innerHTML = `<p>
-      ${power} : 
+      ${powerName} : 
          <span> ${powerDuration} S </span>
        </p>`;
     }else {
       powerUpsTimer = 30
-      clearInterval(powerUpsInterval);
-      displayPowerUpsTimer();
+      startGlobalTimer();
+      clearInterval(powerInterval)
+      displayPowerUpsTimer()
     }
 
-  },1000)
 
- 
+  },1000)
 
 }
 
