@@ -31,10 +31,10 @@ function startGlobalTimer() {
     startGameBtn.disabled = true; // Disable the start button
     gameBox.style.pointerEvents = "auto";
     takeBreak.disabled = false
-
+    displayPowerUpsTimer()
     globalInterval = setInterval(() => {
       updateTimerDisplay();
-       displayPowerUpsTimer()
+     
       if (globalSecond > 0) {
         globalSecond--;
       } else {
@@ -65,6 +65,7 @@ if (powerUpsTimer > 0) {
 
 function stopGlobalTimer() {
   clearInterval(globalInterval);
+  actionBtns.forEach(btn => btn.disabled = true);
   isPlaying = false;
 }
 
