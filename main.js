@@ -14,7 +14,7 @@ let restCount = 3;
 let powerUpsTimer = 30;
 let powerUpsInterval;
 let powerInterval ;
-let powerTimer = 0
+let powerDuration = 0
 let globalInterval;
 let playerScore = 0;
 let isPlaying = false;
@@ -89,15 +89,15 @@ function grantedRandomPowerUps() {
 
   let {power, duration } = randomPowerUps
  
-  powerTimer = duration
+  powerDuration = duration
 
   powerUpsInterval = setInterval(() => {
 
     if (powerTimer > 0) {
-      powerTimer-- 
+      powerDuration-- 
       game__mission.innerHTML = `<p>
       ${power} : 
-         <span> ${powerTimer} S </span>
+         <span> ${powerDuration} S </span>
        </p>`;
     }else {
       powerUpsTimer = 30
