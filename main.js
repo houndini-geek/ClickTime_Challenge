@@ -66,21 +66,24 @@ function startGlobalTimer() {
   }, 1000);
 }
 
+
 function displayPowerUpsTimer() {
+  clearInterval(powerUpsInterval);
+
   powerUpsInterval = setInterval(() => {
     if (powerUpsTimer > 0) {
       powerUpsTimer--;
       game__mission.innerHTML = `<p>
- power_ups in : 
-    <span> ${powerUpsTimer} S </span>
-  </p>`;
-    }else {
-     
-      clearInterval(powerUpsInterval)
+        power_ups in : 
+        <span> ${powerUpsTimer} S </span>
+      </p>`;
+    } else {
+      clearInterval(powerUpsInterval);
       grantedRandomPowerUps();
     }
   }, 1000);
 }
+
 
 function grantedRandomPowerUps() {
   //gamePowerUps
@@ -110,30 +113,25 @@ function grantedRandomPowerUps() {
 }
 
 function timeFreezeFun(powerName, duration) {
- 
   clearInterval(globalInterval);
-  clearInterval(powerUpsInterval)
+  clearInterval(powerUpsInterval);
 
-  powerDuration = duration 
+  let powerDuration = duration;
 
-  powerInterval = setInterval(() => {
-
+  const powerInterval = setInterval(() => {
     if (powerDuration > 0) {
-      powerDuration-- 
+      powerDuration--;
       game__mission.innerHTML = `<p>
-      ${powerName} : 
-         <span> ${powerDuration} S </span>
-       </p>`;
-    }else {
-      powerUpsTimer = 30
+        ${powerName} : 
+        <span> ${powerDuration} S </span>
+      </p>`;
+    } else {
+      clearInterval(powerInterval);
+      powerUpsTimer = 30;
       startGlobalTimer();
-      clearInterval(powerInterval)
-      displayPowerUpsTimer()
+      displayPowerUpsTimer();
     }
-
-
-  },1000)
-
+  }, 1000);
 }
 
 function stopGlobalTimer() {
