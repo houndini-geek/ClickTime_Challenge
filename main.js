@@ -198,10 +198,10 @@ function stopGlobalTimer() {
 function gameOver() {
   stopGlobalTimer();
   restCount = 3;
-
-  // Reset rest count when the game is over
-  // Additional game over logic can be added here if needed
+  alert('Oh no! Time\'s up! 🕒 But don\'t worry, you\'ll crush it next time! 💪 Let\'s reload and try again!');
+  location.reload(true);
 }
+
 
 
 function handleBoxClick() {
