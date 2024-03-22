@@ -1,7 +1,7 @@
 const actionBtns = document.querySelectorAll(".game__state button");
 const startGameBtn = document.querySelector(".startGameBtn");
 const takeBreak = document.querySelector('.takeBreak');
-const resume = document.querySelector('.resume');
+const resumeBtn = document.querySelector('.resume');
 const smart__bar = document.querySelector(".smart_bar");
 const globalTimerTemplate = document.querySelector(".timer");
 const gameBox = document.querySelector(".game__box");
@@ -15,8 +15,8 @@ let playerScore = 0;
 let isPlaying = false;
 
 gameBox.style.pointerEvents = "none";
-// resume.disabled = true 
-// takeBreak.disabled = true
+resume.disabled = true 
+takeBreak.disabled = true
 
 function updateTimerDisplay() {
   globalTimerTemplate.innerHTML = `<span>${globalMinute} M</span> : <span>${globalSecond} S</span>`;
@@ -27,7 +27,6 @@ function startGlobalTimer() {
     isPlaying = true;
     startGameBtn.disabled = true; // Disable the start button
     gameBox.style.pointerEvents = "auto";
-    resume.disabled = false 
     takeBreak.disabled = false
 
     globalInterval = setInterval(() => {
@@ -67,18 +66,26 @@ function handleBoxClick() {
 function takeBreakFun() {
 
   if (restCount > 0) {
-     restCount--
-     stopGlobalTimer()
-  }else {
-    takeBreak.disabled = true
+    restCount-- 
     resume.disabled = false 
-    restCount = 0 
+    takeBreak.disabled = true
+    takeBreak.setAttribute('data-restCount', restCount);
+    stopGlobalTimer()
+  }else{
+
+      restCount = 0 
+      takeBreak.disabled = true
+     resumeBtn.disabled = false 
     console.log('Out of rest count');
+    stopGlobalTimer();
   }
+
 
 }
 
 function resumeGame() {
+  takeBreak.disabled = false
+  resumeBtn.disabled = true
   startGlobalTimer();
 }
 
