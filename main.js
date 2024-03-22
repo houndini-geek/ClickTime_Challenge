@@ -49,7 +49,7 @@ function stopGlobalTimer() {
 
 function gameOver() {
   stopGlobalTimer();
-  restCount = 0; 
+  restCount = 3; 
  
   // Reset rest count when the game is over
   // Additional game over logic can be added here if needed
@@ -67,7 +67,7 @@ function takeBreakFun() {
 
   if (restCount > 0) {
     restCount-- 
-    resume.disabled = false 
+    resumeBtn.disabled = false 
     takeBreak.disabled = true
     takeBreak.setAttribute('data-restCount', restCount);
     stopGlobalTimer()
