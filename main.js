@@ -78,7 +78,7 @@ function displayPowerUpsTimer() {
       clearInterval(powerUpsInterval)
       grantedRandomPowerUps();
     }
-  }, 600);
+  }, 400);
 }
 
 function grantedRandomPowerUps() {
@@ -100,7 +100,7 @@ function grantedRandomPowerUps() {
          <span> ${powerTimer} S </span>
        </p>`;
     }else {
-      powerUpsTimer = 0
+      powerUpsTimer = 30
       clearInterval(powerUpsInterval);
       displayPowerUpsTimer();
     }
