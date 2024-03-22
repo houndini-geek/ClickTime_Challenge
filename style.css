@@ -165,11 +165,24 @@ main .game__state button {
 }
 
 main .game__state button:disabled {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 main .game__state .takeBreak::after {
 
+  content: attr(data-restCount);
+  background-color: #6082b6;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  position: absolute;
+  display: grid;
+  place-content: center;
+  top: -7%;
+  right: 0;
+  color: #f5f5f5;
+  font-weight: 600;
+  font-size: 1.3em;
 }
 
 
