@@ -15,7 +15,7 @@ let playerScore = 0;
 let isPlaying = false;
 
 gameBox.style.pointerEvents = "none";
-resume.disabled = true 
+resumeBtn.disabled = true 
 takeBreak.disabled = true
 
 function updateTimerDisplay() {
