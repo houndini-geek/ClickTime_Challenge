@@ -18,6 +18,7 @@ let powerDuration = 0
 let globalInterval;
 let playerScore = 0;
 let isPlaying = false;
+let score__boost = false
 
 const gamePowerUps = [
   {
@@ -29,7 +30,7 @@ const gamePowerUps = [
     duration: 5
   },
   {
-    power: 'Extra Time',
+    power: 'Score Boost',
     duration: 7
   },
   {
@@ -63,7 +64,7 @@ function startGlobalTimer() {
       clearInterval(globalInterval);
       gameOver();
     }
-  }, 1000);
+  }, 800);
 }
 
 
@@ -89,7 +90,7 @@ function grantedRandomPowerUps() {
   //gamePowerUps
   const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
-  const randomPowerUps = gamePowerUps[1];
+  const randomPowerUps = gamePowerUps[2];
 
   let {power, duration } = randomPowerUps
 
@@ -100,8 +101,8 @@ function grantedRandomPowerUps() {
     case "Time Multiplier":
       timeMultiplierFun(power,duration);
       break;
-    case "Extra Time":
-      extraTimeFun(power,duration);
+    case "Score Boost":
+      scoreBoostFun(power,duration);
       break 
     case "Unlimited Rest Count":
       unlimitedRestCountFun(power,duration);
@@ -122,6 +123,7 @@ function timeFreezeFun(powerName, duration) {
   const powerInterval = setInterval(() => {
     if (powerDuration > 0) {
       powerDuration--;
+      updateTimerDisplay()
       game__mission.innerHTML = `<p>
         ${powerName} : 
         <span> ${powerDuration} S </span>
@@ -160,6 +162,28 @@ function timeMultiplierFun(powerName, duration) {
   }, 1000);
 }
 
+function scoreBoostFun(powerName, duration) {
+  clearInterval(powerUpsInterval);
+  score__boost = true 
+
+  const powerInterval = setInterval(() => {
+
+    if (duration > 0) {
+      duration--
+      game__mission.innerHTML = `<p>
+      ${powerName} : 
+      <span> ${duration} S </span>
+     </p>`;
+    }else {
+      score__boost = false
+      clearInterval(powerInterval);
+      powerUpsTimer = 30;
+      displayPowerUpsTimer();
+    }
+
+  },1000)
+}
+
 
 function stopGlobalTimer() {
   clearInterval(globalInterval);
@@ -176,13 +200,24 @@ function gameOver() {
   // Additional game over logic can be added here if needed
 }
 
+
 function handleBoxClick() {
-  playerScore++;
+
+  if (score__boost) {
+     playerScore+=2;
   if (playerScore % 50 === 0) {
     globalSecond += 10;
   }
+  }else {
+    score__boost = false
+    playerScore++
+    if (playerScore % 50 === 0) {
+      globalSecond += 10;
+    }
+  }
   player_current_score.innerHTML = `Score : ${playerScore}`;
 }
+
 
 function takeBreakFun() {
   if (restCount > 0) {
