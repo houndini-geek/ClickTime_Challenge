@@ -13,6 +13,12 @@ const globalTimerTemplate = document.querySelector(".timer");
 const gameBox = document.querySelector(".game__box");
 const player_current_score = document.querySelector(".player__current__score");
 
+
+const allPowerUpsIcons = 
+document.querySelectorAll('.game__power__ups div');
+
+
+
 let globalSecond = 10;
 let globalMinute = 0;
 let restCount = 3;
@@ -28,23 +34,25 @@ let score__boost = false
 const gamePowerUps = [
   {
     power: 'Time Freeze',
-    duration: 8
+    duration: 8,
+    id: 'abc123'
   },
   {
     power: 'Time Multiplier',
-    duration: 5
+    duration: 5,
+    id: 'def456'
   },
   {
     power: 'Score Boost',
-    duration: 7
+    duration: 7,
+    id: 'ghi789'
   },
   {
     power: 'Gravity Shift',
-    duration: 10
+    duration: 10,
+    id: 'jkl012'
   }
 ];
-
-
 gameBox.style.pointerEvents = "none";
 resumeBtn.disabled = true;
 takeBreak.disabled = true;
@@ -97,20 +105,20 @@ function grantedRandomPowerUps() {
  
   const randomPowerUps = gamePowerUps[randomIndex];
 
-  let {power, duration } = randomPowerUps
+  let {power, duration, id} = randomPowerUps
 
   switch (power) {
     case "Time Freeze":
-      timeFreezeFun(power,duration);
+      timeFreezeFun(power,duration, id);
       break;
     case "Time Multiplier":
-      timeMultiplierFun(power,duration);
+      timeMultiplierFun(power,duration, id);
       break;
     case "Score Boost":
-      scoreBoostFun(power,duration);
+      scoreBoostFun(power,duration, id);
       break 
     case "Gravity Shift":
-      gravityShiftFun(power,duration);
+      gravityShiftFun(power,duration, id);
       break;
     default :
     return
@@ -118,13 +126,15 @@ function grantedRandomPowerUps() {
  
 }
 
-function timeFreezeFun(powerName, duration) {
+function timeFreezeFun(powerName, duration, id) {
+  
   actionBtns.forEach((btn) => (btn.disabled = true));
   clearInterval(globalInterval);
   clearInterval(powerUpsInterval);
 
   let powerDuration = duration;
-
+  
+  animePowerUpIcon(id,true)
   const powerInterval = setInterval(() => {
     if (powerDuration > 0) {
       powerDuration--;
@@ -138,11 +148,13 @@ function timeFreezeFun(powerName, duration) {
       powerUpsTimer = 30;
       startGlobalTimer();
       displayPowerUpsTimer();
+      animePowerUpIcon(id, false);
     }
   }, 1000);
 }
 
-function timeMultiplierFun(powerName, duration) {
+function timeMultiplierFun(powerName, duration, id) {
+  animePowerUpIcon(id,true)
   actionBtns.forEach((btn) => (btn.disabled = true));
   clearInterval(globalInterval);
   clearInterval(powerUpsInterval);
@@ -164,11 +176,13 @@ function timeMultiplierFun(powerName, duration) {
           powerUpsTimer = 30;
           startGlobalTimer();
           displayPowerUpsTimer();
+          animePowerUpIcon(id,false)
       }
   }, 1000);
 }
 
-function scoreBoostFun(powerName, duration) {
+function scoreBoostFun(powerName, duration,id) {
+   animePowerUpIcon(id,true)
   actionBtns.forEach((btn) => (btn.disabled = true));
   clearInterval(powerUpsInterval);
   score__boost = true 
@@ -187,12 +201,13 @@ function scoreBoostFun(powerName, duration) {
       powerUpsTimer = 30;
       displayPowerUpsTimer();
       actionBtns.forEach((btn) => (btn.disabled = false));
+       animePowerUpIcon(id,false)
     }
 
   },1000)
 }
-function gravityShiftFun(powerName, duration) {
-  console.log(duration)
+function gravityShiftFun(powerName, duration,id) {
+   animePowerUpIcon(id,true)
   // Add a class to the game box to trigger the floating effect
   gameBox.classList.add('gravityShift');
   clearInterval(powerUpsInterval);
@@ -211,6 +226,7 @@ function gravityShiftFun(powerName, duration) {
       displayPowerUpsTimer();
       actionBtns.forEach((btn) => (btn.disabled = false));
       gameBox.classList.remove('gravityShift');
+       animePowerUpIcon(id,false)
     }
   },1000)
 }
@@ -295,6 +311,34 @@ actionBtns.forEach((btn) => {
     }
   });
 });
+
+
+
+
+function animePowerUpIcon(id, state){
+  
+  allPowerUpsIcons.forEach((powerIcon,index) => {
+  
+  const powerIconId = 
+  powerIcon.dataset.id
+  
+  powerIcon.classList.remove('active');
+  
+  if (powerIconId === id && state) {
+    
+    powerIcon.classList.add('active');
+  }else {
+    powerIcon.classList.remove('active');
+  }
+  
+  
+  });
+  
+
+  
+  
+}
+
 
 gameBox.onclick = function () {
   if (isPlaying) {
