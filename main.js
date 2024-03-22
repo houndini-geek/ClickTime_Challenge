@@ -101,7 +101,8 @@ function grantedRandomPowerUps() {
        </p>`;
     }else {
       powerUpsTimer = 0
-      displayPowerUpsTimer()
+      clearInterval(powerUpsInterval);
+      displayPowerUpsTimer();
     }
 
   },1000)
