@@ -89,7 +89,7 @@ function grantedRandomPowerUps() {
   //gamePowerUps
   const randomIndex = Math.floor(Math.random() * gamePowerUps.length);
  
-  const randomPowerUps = gamePowerUps[0];
+  const randomPowerUps = gamePowerUps[1];
 
   let {power, duration } = randomPowerUps
 
@@ -113,6 +113,7 @@ function grantedRandomPowerUps() {
 }
 
 function timeFreezeFun(powerName, duration) {
+  actionBtns.forEach((btn) => (btn.disabled = true));
   clearInterval(globalInterval);
   clearInterval(powerUpsInterval);
 
@@ -133,6 +134,32 @@ function timeFreezeFun(powerName, duration) {
     }
   }, 1000);
 }
+
+function timeMultiplierFun(powerName, duration) {
+  clearInterval(globalInterval);
+  clearInterval(powerUpsInterval);
+
+  let powerDuration = duration;
+
+  const powerInterval = setInterval(() => {
+      if (powerDuration > 0) {
+          // Increase the global timer by 3 seconds every second
+          globalSecond += 3;
+          updateTimerDisplay(); // Update the timer display
+          powerDuration--; // Decrement the power-up duration
+          game__mission.innerHTML = `<p>
+              ${powerName} : 
+              <span> ${powerDuration} S </span>
+          </p>`;
+      } else {
+          clearInterval(powerInterval);
+          powerUpsTimer = 30;
+          startGlobalTimer();
+          displayPowerUpsTimer();
+      }
+  }, 1000);
+}
+
 
 function stopGlobalTimer() {
   clearInterval(globalInterval);

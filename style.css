@@ -140,6 +140,16 @@ main .game__power__ups div svg {
   height: 1.5em;
 }
 
+main .game__power__ups div.active {
+
+  background-color: hsla(294, 100%, 55%, 1);
+}
+
+main .game__power__ups div.active svg{
+
+  fill: #f5f5f5;
+}
+
 main .game__state {
   width: fit-content;
   text-align: center;
