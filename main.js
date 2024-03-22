@@ -13,7 +13,7 @@ const globalTimerTemplate = document.querySelector(".timer");
 const gameBox = document.querySelector(".game__box");
 const player_current_score = document.querySelector(".player__current__score");
 
-const playerScoreTemplate = document.querySelector('.player__score')
+const displayHightScore = document.querySelector('.displayHightScore')
 
 
 const allPowerUpsIcons = 
@@ -255,6 +255,13 @@ function gameOver() {
 
 function handleBoxClick() {
 
+  // Retrieve the saved high score from localStorage
+  let savedHIScore = Number(localStorage.getItem('HIScore')) || 0;
+
+  // Retrieve the saved score from localStorage
+  let savedScore = Number(localStorage.getItem('Score')) || 0;
+
+
   if (score__boost) {
      playerScore+=2;
   if (playerScore % 50 === 0) {
@@ -267,9 +274,19 @@ function handleBoxClick() {
       globalSecond += 10;
     }
   }
-  player_current_score.innerHTML = `Score : ${playerScore}`;
   
-  savePlayerScore(playerScore)
+  player_current_score.innerHTML = `Score: ${playerScore}`
+  
+  savePlayerScore(playerScore);
+  
+  
+  if (playerScore % 20 === 0) {
+    
+    displayHightScore.innerHTML = `HI :${savedHIScore}`
+  
+    }
+  
+  
 }
 
 
@@ -282,14 +299,15 @@ function savePlayerScore(score) {
 
   // Update the high score if the current score is higher
   if (score > savedHIScore) {
-    savedHIScore = score;
-    localStorage.setItem('HIScore', savedHIScore);
+        savedHIScore = score;
+      localStorage.setItem('HIScore', savedHIScore);
+    
   }
 
   // Always update the current score
   savedScore = score;
   localStorage.setItem('Score', savedScore);
-  displayScores()
+  //displayScores()
 }
 
 
@@ -303,14 +321,10 @@ function displayScores() {
   let savedScore = Number(localStorage.getItem('Score')) || 0;
 
 
-  playerScoreTemplate.innerHTML = `
   
-   <span>HI : ${savedHIScore}</span> :
-   <span class="player__current__score">Score : ${savedScore}</span>
+  displayHightScore.innerHTML = `HI :${savedHIScore}`
   
-  `
-  
-  
+   
 }
 
 
