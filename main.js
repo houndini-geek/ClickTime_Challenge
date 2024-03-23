@@ -85,7 +85,7 @@ let score__boost = false
 const gamePowerUps = [
   {
     power: 'Time Freeze',
-    duration: 8,
+    duration: 5,
     id: 'abc123'
   },
   {
@@ -203,7 +203,7 @@ function timeFreezeFun(powerName, duration, id) {
       displayPowerUpsTimer();
       animePowerUpIcon(id, false);
     }
-  }, 1000);
+  }, 800);
 }
 
 function timeMultiplierFun(powerName, duration, id) {
@@ -231,7 +231,7 @@ function timeMultiplierFun(powerName, duration, id) {
           displayPowerUpsTimer();
           animePowerUpIcon(id,false)
       }
-  }, 1000);
+  }, 800);
 }
 
 function scoreBoostFun(powerName, duration,id) {
@@ -257,7 +257,7 @@ function scoreBoostFun(powerName, duration,id) {
        animePowerUpIcon(id,false)
     }
 
-  },1000)
+  },800)
 }
 function gravityShiftFun(powerName, duration,id) {
    animePowerUpIcon(id,true)
